@@ -3,6 +3,14 @@ body, html {
     margin: 0;
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* This ensures the container takes up the full height of the viewport */
+}
+
+
 .bg-image {
     /* The image used */
     background-image: url('assets/Frog Legion Generals.png');
