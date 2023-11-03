@@ -210,8 +210,8 @@ function displayBingoMessage() {
     messageContainer.style.fontSize = '3rem';
     messageContainer.style.color = 'yellow';
     messageContainer.style.textShadow = '0 0 10px yellow';
-    messageContainer.style.padding = '20px';
-    messageContainer.style.border = '3px solid yellow';
+    messageContainer.style.padding = '60px';
+    messageContainer.style.border = '5px solid yellow';
     messageContainer.style.backgroundColor = 'black';
     messageContainer.style.borderRadius = '10px';
     messageContainer.style.opacity = '0';
