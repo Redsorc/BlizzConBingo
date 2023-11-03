@@ -1,0 +1,80 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg-image {
+    /* The image used */
+    background-image: url('assets/Frog Legion Generals.png');
+
+    /* Add the blur effect */
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /* Panning effect */
+    animation: panning 30s infinite alternate;
+    position: fixed;
+    width: 100%;
+    z-index: -1;
+}
+
+.container {
+    z-index: 2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #ffffff;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 30px;
+}
+
+label {
+    font-size: 1.2rem;
+}
+
+input[type="text"] {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+}
+
+.bg-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Adjust the color and opacity to mute the background */
+    z-index: -1;
+}
+
+@keyframes panning {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
