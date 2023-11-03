@@ -13,12 +13,182 @@ body::after{
     font-family: 'fake_friz';
     color: #ffffff;
     opacity: 1;
+    overflow: hidden;
 }
 
 .bingo-tile.active {
     background-image: url('assets/glow_orb.png'),url('assets/tick.png'), url('assets/reward_choice_frame_2.png'), url('assets/reward_choice_lock.png'), url('assets/Reward_choice_bg_2.png');
     background-position: right 92px bottom 4px, left 5px top 7px, right bottom, right 12px bottom 8px, right bottom;
 }
+
+.bingo-tile.active .glow-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('assets/reward_choice_hover_2.png') center center/cover no-repeat;
+    animation: glow-effect 1s forwards; /* Adjust timing as needed */
+  }
+
+
+.bingo-tile.active::after {
+    body::after{
+        content: url('assets/tick.png') url('assets/reward_choice_frame_2.png') url('assets/Reward_choice_bg_2.png');
+        display: none;
+    }
+
+    .bingo-tile {
+        position: relative;
+        width: 220px;
+        height: 125px;
+        background-image:  url('assets/cross.png'), url('assets/reward_choice_frame_1.png'), url('assets/reward_choice_lock.png'), url('assets/Reward_choice_bg_1.png');
+        background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+        background-position: left 8px top 7px, right bottom, right 12px bottom 8px, right bottom;
+        font-family: 'fake_friz';
+        color: #ffffff;
+        opacity: 1;
+        overflow: hidden;
+    }
+
+    .bingo-tile.active {
+        background-image: url('assets/glow_orb.png'),url('assets/tick.png'), url('assets/reward_choice_frame_2.png'), url('assets/reward_choice_lock.png'), url('assets/Reward_choice_bg_2.png');
+        background-position: right 92px bottom 4px, left 5px top 7px, right bottom, right 12px bottom 8px, right bottom;
+    }
+
+    .bingo-tile.active .glow-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('assets/reward_choice_hover_2.png') center center/cover no-repeat;
+        animation: glow-effect 1s forwards; /* Adjust timing as needed */
+      }
+
+
+    .bingo-tile.active::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%; /* Start outside of the tile */
+        width: 100%;
+        height: 100%;
+        background: url('assets/shimmer.png') no-repeat center center;
+        background-size: cover;
+        animation: shimmer-effect 1s forwards;
+        border: 2px solid red;
+      }
+
+    .bingo-tile.active:hover{
+        background-image: url('assets/glow_orb_hover.png'),url('assets/tick.png'), url('assets/reward_choice_frame_2.png'), url('assets/reward_choice_lock.png'), url('assets/Reward_choice_bg_2.png');
+        background-position: right 4px bottom 7px, left 5px top 7px, right bottom, right 12px bottom 8px, right bottom;
+    }
+
+    .bingo-tile .bingo-text {
+        position: absolute;
+        top: 10px;
+        left: 43px;
+        font-family: 'fake_friz';
+        font-size: 14px;
+        color: #7d7d7d;
+        text-shadow: 2px 2px 2px black;
+        width: 160px;
+        white-space: normal;
+        overflow-wrap: break-word;
+        z-index: 0;
+    }
+
+    .bingo-tile.active .bingo-text {
+        color: #d8cc48;
+    }
+
+    .bingo-tile .progress-text {
+        position: absolute;
+        bottom: 15px;
+        right: 22px;
+        font-family: 'fake_friz';
+        font-size: 14px;
+        color: #7d7d7d;
+        text-shadow: 2px 2px 2px black;
+        z-index: 0;
+    }
+
+    .bingo-tile::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('assets/reward_choice_hover_1.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+    }
+
+    .bingo-tile::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: url('assets/reward_choice_frame_2.png') no-repeat right bottom;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+
+    .bingo-tile:hover::before {
+        opacity: 0;
+    }
+
+    .bingo-tile.active::before{
+        opacity: 0;
+    }
+
+    @font-face {
+        font-family: 'fake_friz';
+        src: url('assets/BrasileaOpti-Medium.otf') format('otf');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .bingo-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 10px;
+        width: fit-content;
+        margin: 0 auto;
+     }
+
+    body {
+        background-color: black;
+    }
+
+    /* Shimmer animation */
+    @keyframes shimmer-effect {
+        0% {
+            background-position: 100% 0; /* Start from the left */
+        }
+        100% {
+            background-position: 100% 0; /* Move to the right */
+        }
+    }
+
+      /* Glow fade animation */
+      @keyframes glow-effect {
+        0%, 100% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+  }
 
 .bingo-tile.active:hover{
     background-image: url('assets/glow_orb_hover.png'),url('assets/tick.png'), url('assets/reward_choice_frame_2.png'), url('assets/reward_choice_lock.png'), url('assets/Reward_choice_bg_2.png');
@@ -37,6 +207,10 @@ body::after{
     white-space: normal;
     overflow-wrap: break-word;
     z-index: 0;
+}
+
+.bingo-tile.active .bingo-text {
+    color: #d8cc48;
 }
 
 .bingo-tile .progress-text {
@@ -99,3 +273,27 @@ body::after{
     width: fit-content;
     margin: 0 auto;
  }
+
+body {
+    background-color: black;
+}
+
+/* Shimmer animation */
+@keyframes shimmer-effect {
+    from {
+      left: -100%; /* Start from the left side of the tile, outside of view */
+    }
+    to {
+      left: 100%; /* End at the right side of the tile, moving the background */
+    }
+  }
+
+  /* Glow fade animation */
+  @keyframes glow-effect {
+    0%, 100% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
